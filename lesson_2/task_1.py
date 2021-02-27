@@ -2,7 +2,7 @@
 
 result_1 = 15 * 3
 result_2 = 15 / 3
-result_3 = 15 // 2
+result_3 = 15 * 2
 result_4 = 15 ** 2
 
 print('15 * 3 = ', result_1, type(result_1))

@@ -6,10 +6,11 @@ strings_format = []
 print(strings)
 
 # Выявить числа
+
 for idx in range(len(strings)):
     if strings[idx].isdigit():  # Костыль
-        strings[idx] = int(strings[idx])    # Возможно костыль
-        strings[idx] = f'{strings[idx]:02d}'    # Возможно костыль
+        strings[idx] = int(strings[idx])  # Возможно костыль
+        strings[idx] = f'{strings[idx]:02d}'  # Возможно костыль
 
 print(strings)
 
