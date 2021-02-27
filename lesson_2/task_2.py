@@ -1,15 +1,20 @@
 # Задание 2
 
-ex_list = ['в', '5', 'часов', '17', 'минут', 'температура',
-           'воздуха', 'была', '+5', 'градусов']
+strings = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+strings_format = []
 
-print(type(ex_list[0]))
-ex_list[0] = int(ex_list[0])
-print(type(ex_list[0]))
+print(strings)
 
-print(type(ex_list[1]))
-ex_list[1] = int(ex_list[1])
-print(type(ex_list[1]))
+# Выявить числа
+for idx in range(len(strings)):
+    if strings[idx].isdigit():  # Костыль
+        strings[idx] = int(strings[idx])    # Возможно костыль
+        strings[idx] = f'{strings[idx]:02d}'    # Возможно костыль
 
-# for element in ex_list:
-#     print(element)
+print(strings)
+
+for idx in range(len(strings)):
+    print(type(strings[idx]))
+
+# print(ex_list[1].isdigit())
+# string = ''.join(strings)
