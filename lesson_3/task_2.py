@@ -1,20 +1,19 @@
 # Задание 2
 
-numerals = {
-    'one': 'один',
-    'two': 'два',
-    'three': 'три',
-    'four': 'четыре',
-    'five': 'пять',
-    'six': 'шесть',
-    'seven': 'семь',
-    'eight': 'восемь',
-    'nine': 'девять',
-    'ten': 'десять'
-}
-
 
 def num_translate_adv(num=None):
+    numerals = {
+        'one': 'один',
+        'two': 'два',
+        'three': 'три',
+        'four': 'четыре',
+        'five': 'пять',
+        'six': 'шесть',
+        'seven': 'семь',
+        'eight': 'восемь',
+        'nine': 'девять',
+        'ten': 'десять'
+    }
     for en, rus in numerals.items():
         if num == en:
             return rus
