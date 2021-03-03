@@ -3,7 +3,7 @@
 from random import choice
 
 
-def get_jokes(num=1, repeat=False):
+def get_jokes(num):
     nouns = ["автомобиль", "лес", "огонь", "город", "дом"]
     adverbs = ["сегодня", "вчера", "завтра", "позавчера", "ночью"]
     adjectives = ["веселый", "яркий", "зеленый", "утопичный", "мягкий"]
@@ -13,4 +13,4 @@ def get_jokes(num=1, repeat=False):
     return list_jokes
 
 
-print(get_jokes(3, True))
+print(get_jokes(3))

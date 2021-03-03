@@ -1,7 +1,7 @@
 # Задание 2
 
 
-def num_translate_adv(num=None):
+def num_translate_adv(num):
     numerals = {
         'one': 'один',
         'two': 'два',
@@ -15,12 +15,12 @@ def num_translate_adv(num=None):
         'ten': 'десять'
     }
     for en, rus in numerals.items():
-        if num == en:
+        if en == num:
             return rus
-        elif num == en.title():
+        elif en.title() == num:
             return rus.title()
 
 
 print(num_translate_adv('Seven'))
-print(num_translate_adv('seven'))
-print(num_translate_adv('одиннадцать'))
+print(num_translate_adv('ten'))
+print(num_translate_adv('10'))
