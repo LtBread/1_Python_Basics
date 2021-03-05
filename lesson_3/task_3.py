@@ -5,13 +5,14 @@ def thesaurus(*args):
     list_letters = []
 
     # Этот блок чтобы исключить повторение
+
     for name in args:
         list_letters.append(name[0])
-    list_letters = set(list_letters)
-    list_letters = list(list_letters)
+    list_letters = list(set(list_letters))
     list_letters.sort()
 
     # Теперь не будет "дублирующих" итераций
+
     for let in list_letters:
         list_names = []
         for name in args:
@@ -23,4 +24,3 @@ def thesaurus(*args):
 
 names = ['Иван', 'Марина', 'Пётр', 'Саня', 'Илья', 'Паша', 'Марина']
 print(thesaurus(*names))
-
