@@ -1,4 +1,4 @@
-# Задание 2
+# Задание 3
 
 from itertools import zip_longest
 import pickle
