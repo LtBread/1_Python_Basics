@@ -1,7 +1,6 @@
 # Задание 6. Запись
 
 import argparse
-from decimal import Decimal
 
 
 def write_records(sale):
@@ -13,4 +12,3 @@ parser = argparse.ArgumentParser()
 parser.add_argument('sale', type=str)
 arg = parser.parse_args()
 write_records(arg.sale)
-
