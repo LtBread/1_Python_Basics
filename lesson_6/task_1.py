@@ -1,11 +1,11 @@
 # Зададние 1
 
-import json
-import pickle
+data = []
+row_data = []
 
 with open('nginx_logs.txt', 'r', encoding='utf-8') as file:
-    # (< remote_addr >, < request_type >, < requested_resource >)
-    i = 0
-    for row in range(10):
-        i += 1
-        print(i, file.readline(14))
+    for row in file:
+        raw_row = row.split()
+        row_data = [raw_row[0], raw_row[5][1:], raw_row[6]]
+        data.append(tuple(row_data))
+print(data)

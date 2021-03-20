@@ -28,5 +28,3 @@ with open('hobbies_of_users.pickle', 'rb') as f:
 print(type(content))
 for el in content.items():
     print(el)
-
-# print(content['Ильхам,Расулович,Камазов'])
