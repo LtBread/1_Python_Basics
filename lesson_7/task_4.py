@@ -1,20 +1,32 @@
 import os
-import shutil
 
 
 def show_stat(folder_path):
+    stat = get_stat(folder_path)
+    keys = list(stat)
+    keys.sort()
+    for key in keys:
+        print(f'{key}: {stat[key]}')
+
+
+def get_stat(folder_path):
     stat = {}
-    size = 100000
-    files_count = 0
-    for root, dirs, files in os.walk(folder_path):
+    for root, _, files in os.walk(folder_path):
         for file in files:
-            if os.stat(os.path.join(root, file)).st_size < size:
-                files_count += 1
-                print(root, files_count)
-        stat[size] = files_count
-    print(stat)
+            size = os.stat(os.path.join(root, file)).st_size
+            key = 10 ** len(str(size))
+            if key in stat:
+                stat[key] += 1
+            else:
+                stat[key] = 1
+    if stat == {}:
+        raise Exception('В директории нет файлов')
+    return stat
 
 
 if __name__ == '__main__':
-    my_folder_path = 'C:/Users/Bread/Documents/[]'
-    show_stat(my_folder_path)
+    try:
+        my_folder_path = './'
+        show_stat(my_folder_path)
+    except Exception as e:
+        print(e)
