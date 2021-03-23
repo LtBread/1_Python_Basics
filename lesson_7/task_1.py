@@ -2,25 +2,27 @@ from os import path, mkdir
 from shutil import rmtree
 
 
-def create_starter(dir_name, dir_path='./', folders=None):
+def create_starter(dir_path, dir_name, folders):
     current_path = path.join(dir_path, dir_name)
-    mkdir(path.join(dir_path, dir_name))
-    if folders:
-        for folder in folders:
-            mkdir(path.join(path.abspath(current_path), folder))
+    if not path.exists(current_path):
+        mkdir(current_path)
+    for folder in folders:
+        current_folder = path.join(current_path, folder)
+        if not path.exists(current_folder):
+            mkdir(current_folder)
 
 
-def destroy_starter(dir_name, dir_path='./'):
+def destroy_starter(dir_path, dir_name):
     current_path = path.join(dir_path, dir_name)
     rmtree(current_path)
 
 
 if __name__ == '__main__':
-    my_name = 'my_project'
-    my_path = 'C:/Users/Bread/Desktop'
+    my_name = 'my_first_project'
+    my_path = './'
     my_folders = ('settings', 'mainapp', 'adminapp', 'authapp')
     try:
-        create_starter(my_name, folders=my_folders)
-        # destroy_starter(my_name)
+        create_starter(my_path, my_name, my_folders)
+        # destroy_starter(my_path, my_name)
     except Exception as e:
-        print(e.args[1])
+        print(e)
