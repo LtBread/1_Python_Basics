@@ -1,9 +1,9 @@
 class Car:
-    def __init__(self, speed, color, name, is_police=False):
+    def __init__(self, speed, color, name):
         self._speed = float(speed)
         self._color = color
         self._name = name
-        self._is_police = is_police
+        self._is_police = False
 
     def __str__(self):
         return f'{self._speed} {self._color} {self._name} {self._is_police}'
@@ -45,10 +45,9 @@ class WorkCar(Car):
 
 
 class PoliceCar(Car):
-    # def __init__(self, speed, color, name, is_police=True):
-    #     super().__init__(speed, color, name)
-    #     self._is_police = is_police
-    pass
+    def __init__(self, speed, color, name):
+        super().__init__(speed, color, name)
+        self._is_police = True
 
 
 if __name__ == '__main__':
