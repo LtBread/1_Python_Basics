@@ -1,4 +1,6 @@
 class Car:
+    is_police = False
+
     def __init__(self, speed, color, name):
         self._speed = float(speed)
         self._color = color

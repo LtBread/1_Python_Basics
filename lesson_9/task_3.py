@@ -2,14 +2,14 @@ from decimal import Decimal
 
 
 class Worker:
-    def __init__(self, name, surname, position, income):
+    def __init__(self, name, surname, position, wade, bonus=0):
         self.name = name
         self.surname = surname
         self.position = position
-        self._income = income
+        self._income = {'wade': wade, 'bonus': bonus}
 
     def __str__(self):
-        return f'{self.name} {self.surname} {self.position} {self._income}'
+        return f'{self.name} {self.surname} {self.position} {self._income["wade"]} {self._income["bonus"]}'
 
 
 class Position(Worker):
@@ -22,16 +22,13 @@ class Position(Worker):
 
 
 if __name__ == '__main__':
-    kenobi = Worker("Обиван", "Кеноби", "Мастер-джедай",
-                    {'wade': 150, 'bonus': 110})
+    kenobi = Worker("Обиван", "Кеноби", "Мастер-джедай", 150, 110)
     print(kenobi)
-    skywalker = Position("Энакин", "Скайвокер", "Падаван",
-                         {'wade': 120, 'bonus': 100})
+    skywalker = Position("Энакин", "Скайвокер", "Падаван", 120, 100)
     print(skywalker)
     print(skywalker.get_full_name())
     print(skywalker.get_total_income())
-    weider = Position("Энакин", "Скайвокер", "Верховный главнокомандующий",
-                      {'wade': 100, 'bonus': 1000})
+    weider = Position("Энакин", "Скайвокер", "Верховный главнокомандующий", 100, 1000)
     print(weider)
     print(weider.get_full_name())
     print(weider.get_total_income())
