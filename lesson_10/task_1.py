@@ -9,32 +9,19 @@ class Matrix:
         self.matrix = matrix
 
     def __str__(self):
-        result_row = ''
-        for row in self.matrix:
-            result = ''
-            for el in row:
-                result += f'{el}\t'
-            result_row += f'\n{result}\n'
-        return f'{result_row}'
+        result = '\n\n'.join(['\t'.join([f'{el}' for el in row])
+                              for row in self.matrix])
+        return f'{result}\n'
 
     def __add__(self, other):
-        filling = []
-        for row_f, row_l in zip(self.matrix, other.matrix):
-            _row = []
-            for el_f, el_l in zip(row_f, row_l):
-                _row.append(el_f + el_l)
-            filling.append(_row)
+        filling = [[(el_f + el_l) for el_f, el_l in zip(row_f, row_l)]
+                   for row_f, row_l in zip(self.matrix, other.matrix)]
         return self.__class__(filling)
 
 
 def fill():
-    filling = []
-    for row in range(ROWS):
-        _row = []
-        for el in range(COLS):
-            _row.append(random.randint(-10, 10))
-        filling.append(_row)
-    return filling
+    return [[random.randint(-10, 10) for _ in range(COLS)]
+            for _ in range(ROWS)]
 
 
 if __name__ == '__main__':

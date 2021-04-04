@@ -1,3 +1,6 @@
+# import abs
+
+
 class Clothes:
     units = 'm^2'
 
@@ -21,6 +24,10 @@ class Clothes:
 
     def calc_consumption(self):
         raise NotImplementedError(self.__class__.__name__)
+
+    # @abs.abstractmethod
+    # def calc_consumption(self):
+    #     pass
 
 
 class Coat(Clothes):
