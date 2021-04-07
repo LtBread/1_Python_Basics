@@ -1,33 +1,38 @@
+import re
+
+
 class Date:
     def __init__(self, date):
         self.date = date
 
+    def __str__(self):
+        return f'{self.date}'
+
     @classmethod
     def converter(cls, date):
-        instance = cls(cls.validator(date.split('-')))
-
+        instance = cls(cls.validator(date))
         return instance
 
     @staticmethod
     def validator(date):
-        date_dict = {
-            'day': date[0],
-            'month': date[1],
-            'year': date[2]
-        }
-        if date_dict['day'] < 0 and date_dict['day'] > 31:
-            raise ValueError('wrong date')
-        if not date:
-            raise ValueError('wrong date')
-        return date
+        pattern = re.compile(r'(?P<day>\d{2})-(?P<month>\d{2})-(?P<year>\d+)$')
+        result = pattern.match(date)
+        if not result:
+            raise ValueError('Некорректная дата')
+        result = result.groupdict()
+        for key in result.keys():
+            result[key] = int(result[key])
+        if result['day'] < 1 or result['day'] > 32:
+            raise ValueError('Некорректное число')
+        if result['month'] < 1 or result['month'] > 12:
+            raise ValueError('Некорректный месяц')
+        if result['year'] == 2007:
+            raise ValueError('ВЕРНИТЕ 2007й!')
+        return result
 
 
 if __name__ == '__main__':
     my_date = Date('04-04-2021')
-    print((my_date.date), type(my_date.date))
-
-    my_date.converter('04-04-2021')
-    print((my_date.date), type(my_date.date))
-
-    my_date2 = Date.converter('04-04-2021')
-    print((my_date2.date), type(my_date2.date))
+    print(my_date)
+    my_date2 = Date.converter('07-04-2021')
+    print(my_date2)
