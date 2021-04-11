@@ -1,0 +1,2 @@
+lst = []
+print(dir(lst))
