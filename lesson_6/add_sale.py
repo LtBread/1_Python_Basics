@@ -1,14 +1,26 @@
-# Задание 6. Запись
+import sys
+import re
 
-import argparse
 
-
-def write_records(sale):
+def add(argv):
+    if not argv:
+        return 1
     with open('bakery.csv', 'a', encoding='utf-8') as file:
-        file.write(f'{sale}\n')
+        for arg in argv[1:]:
+            file.write(f'{valid_float_converter(arg):11.2f}\n')
+    return 0
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument('sale', type=str)
-arg = parser.parse_args()
-write_records(arg.sale)
+def valid_float_converter(value):
+    pattern = re.compile(r'\d+(?:[.,]\d+)*$')
+    if pattern.match(value):
+        return float(value.replace(',', '.'))
+    raise ValueError(f'wrong value: {value}')
+
+
+if __name__ == '__main__':
+    try:
+        exit(add(sys.argv))
+    except ValueError as e:
+        print(e)
+        exit(1)
